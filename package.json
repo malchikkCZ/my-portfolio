@@ -1,0 +1,21 @@
+{
+  "name": "my-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio website created with Node and Express JS.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Viktor Bem",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "express-ejs-layouts": "^2.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
