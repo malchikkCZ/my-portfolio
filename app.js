@@ -8,6 +8,7 @@ const indexRouter = require('./routes/index');
 const portfolioRouter = require('./routes/portfolio');
 const resumeRouter = require('./routes/resume');
 const contactRouter = require('./routes/contact');
+const adminRouter = require('./routes/admin');
 
 
 // initialize app
@@ -29,6 +30,7 @@ app.use('/', indexRouter);
 app.use('/portfolio', portfolioRouter);
 app.use('/resume', resumeRouter);
 app.use('/contact', contactRouter);
+app.use('/admin', adminRouter);
 
 
 // app listen

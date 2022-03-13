@@ -1,7 +1,7 @@
 {
   "name": "my-portfolio",
   "version": "1.0.0",
-  "description": "Portfolio website created with Node and Express JS.",
+  "description": "Portfolio website created with Node and Express JS running on www.viktorbem.cz domain (published on Heroku).",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -13,7 +13,8 @@
     "body-parser": "^1.19.2",
     "ejs": "^3.1.6",
     "express": "^4.17.3",
-    "express-ejs-layouts": "^2.5.1"
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
