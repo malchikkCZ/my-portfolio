@@ -1,11 +1,11 @@
 <section class="login-box">
 
-    <form class="login-form" action="/admin/login" method="POST">
+    <form class="login-form" action="/admin/register" method="POST">
         <label for="email" class="sr-only">Email address</label>
         <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required autofocus>
         <label for="password" class="sr-only">Password</label>
         <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
         <p class="pt-3 text-danger">
             <% if (messages.error) { %>
                 <%= messages.error %>

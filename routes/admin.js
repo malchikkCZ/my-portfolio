@@ -1,23 +1,42 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
 const express = require('express');
+const bcrypt = require('bcrypt');
+const passport = require('passport');
+const flash = require('express-flash');
 const session = require('express-session');
+
+
+// initialize passport module
+const initializePassport = require('./utils/passport-config');
+const { append } = require('express/lib/response');
+initializePassport(
+    passport,
+    email => Users.find(user => user.email === email),
+    id => Users.find(user => user.id === id)
+);
 
 
 // initialize router
 const router = express.Router();
+router.use(flash());
 router.use(session({
-    secret: 'gudjhguisahgsiaugh',
-    resave: true,
-    saveUninitialized: true
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
 }));
+router.use(passport.initialize());
+router.use(passport.session());
 
 
 const layout = 'layouts/admin';
-const Users = [
-    {
-        email: "test@test.com",
-        password: "password"
-    }
-];
+const Users = [{
+    id: '1647201789268',
+    email: 'test@test.cz',
+    password: '$2b$10$gQH1QCDdJTkTbn6uToywnuPocVhnFVSMZyBZiykKWlJvif2EMRYLO'
+}];
 
 
 // admin index route
@@ -41,54 +60,58 @@ router.get('/jobs', checkSignIn, (req, res) => {
 
 
 // login routes
-router.get('/login', (req, res) => {
+router.get('/login', checkSignOut, (req, res) => {
     res.render('admin/login', { layout: layout });
 });
 
-router.post('/login', (req, res) => {
-    if (!req.body.email || !req.body.password) {
-        res.render('admin/login', {
-            layout: layout,
-            errorMessage: 'Please enter your email and password.'
+router.post('/login', checkSignOut, passport.authenticate('local', {
+    successRedirect: '/admin',
+    failureRedirect: '/admin/login',
+    failureFlash: true
+}));
+
+
+// register routes
+router.get('/register', checkSignOut, (req, res) => {
+    res.render('admin/register', { layout: layout });
+});
+
+router.post('/register', checkSignOut, async (req, res) => {
+    try {
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        Users.push({
+            id: Date.now().toString(),
+            email: req.body.email,
+            password: hashedPassword
         });
-    } else {
-        if (isUserAuthenticated(req, res)) {
-            res.redirect('/admin');
-        } else {
-            res.render('admin/login', {
-                layout: layout,
-                errorMessage: 'Invalid email or password.'
-            });
-        }
+        res.redirect('/admin/login');
+    } catch {
+        res.redirect('/admin/register');
     }
+    console.log(Users);
 });
 
 
 // logout route
 router.get('/logout', (req, res) => {
-    req.session.destroy();
+    req.logOut();
     res.redirect('/admin');
 });
 
 
 // helper functions
 function checkSignIn(req, res, next) {
-    if (!req.session.user) {
-        res.redirect('/admin/login');
-    } else {
-        next();
+    if (req.checkSignIn()) {
+        return next();
     }
+    res.redirect('/admin/login');
 }
 
-function isUserAuthenticated(req, res) {
-    let isAuthenticated = false;
-    Users.filter((user) => {
-        if (user.email === req.body.email && user.password == req.body.password) {
-            req.session.user = user;
-            isAuthenticated = true;
-        }
-    });
-    return isAuthenticated;
+function checkSignOut(req, res, next) {
+    if (req.checkSignIn()) {
+        return res.redirect('/admin');
+    }
+    next();
 }
 
 
