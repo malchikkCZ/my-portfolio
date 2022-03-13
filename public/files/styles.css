@@ -1,0 +1,143 @@
+:root {
+    --color-dark: #053742;
+    --color-light: #E8F0F2;
+    --color-link-main: #39A2DB;
+    --color-link-transparent: #39A2DB30;
+}
+
+
+body {
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.resumeContainer {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+
+.paperlike {
+    font-family: sans-serif;
+    width: 1000px;
+    padding: 100px;
+    background-color: white;
+    font-size: 0.9rem;
+}
+
+.left {
+    grid-column: span 3;
+    padding-right: 20px;
+}
+
+.right {
+    border-left: 1px solid var(--color-link-main);
+    padding-left: 20px;
+}
+
+.right ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.bigHeading {
+    margin: 0;
+    font-size: 48px;
+    font-weight: bold;
+    border: none;
+    text-transform: uppercase;
+    padding: 0;
+    color:var(--color-link-main);
+}
+
+.sectionTitle {
+    color: var(--color-link-main);
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    border-left: 10px solid var(--color-link-main);
+    padding-left: 30px;
+}
+
+.paperlike h2 {
+    margin: 0;
+    font-weight: normal;
+}
+
+.paperlike h3 {
+    display: inline-block;
+    font-weight: normal;
+    font-size: 1.1rem;
+    width: 60%;
+    margin: 0;
+}
+
+.paperlike h5 {
+    display: inline-block;
+    font-weight: normal;
+    color:var(--color-link-main);
+    width: 35%;
+    margin: 0;
+}
+
+.paperlike hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid var(--color-link-main);
+}
+
+.resumeSection {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    width: 100%;
+}
+
+.resumeSection a {
+    color: var(--color-dark);
+}
+
+.resumeSection a:hover {
+    color: var(--color-link-main);
+}
+
+.resumeAbstract {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 50px;
+    font-size: 1rem;
+}
+
+.resumeAbstract img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+}
+
+.jobXP {
+    margin-bottom: 60px;
+}
+
+.resumeFooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 30px;
+}
+
+.resumeFooter i {
+    font-size: 36px;
+    color: var(--color-dark);
+}
+
+.resumeFooter div a {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    color: var(--color-link-main);
+}

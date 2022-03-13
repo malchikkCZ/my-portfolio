@@ -1,0 +1,53 @@
+.skills {
+    display: grid;
+    justify-content: stretch;
+    grid-template-columns: repeat(4, auto);
+    column-gap: 20px;
+}
+
+.skill {
+    margin-top: 20px;
+}
+
+.skill h2 {
+    margin-top: 0;
+}
+
+
+@media (max-width: 1023px) {
+
+    .skills {
+        grid-template-columns: auto;
+    }
+
+    .skill {
+        text-align: center;
+    }
+}
+
+
+/* Font-Awesome skills icons */
+
+.skill i {
+    font-size: 36px;
+}
+
+.fa-html5 {
+    color: #DE6E3C;
+}
+
+.fa-css3-alt {
+    color: #53A7DC
+}
+
+.fa-js-square {
+    color: #F1DE4F;
+}
+
+.fa-python {
+    color: #456E9C;
+}
+
+.fa-git-alt {
+    color: #EF391A;
+}

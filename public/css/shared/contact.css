@@ -1,0 +1,42 @@
+.contact-social {
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    justify-content: flex-start;
+}
+
+.contact-social i {
+    font-size: 36px;
+    color: var(--color-dark);
+}
+
+.contact-social i:hover {
+    color: var(--color-link-main);
+}
+
+textarea {
+    margin-top: 30px;
+    font-size: 1rem;
+    color: var(--color-dark);
+    resize: vertical;
+    padding: 10px;
+    width: 100%;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--color-dark);
+    box-shadow: 0 0 10px var(--color-dark);
+}
+
+
+@media (max-width: 1024px) {
+
+    .contact-social {
+        justify-content: center;
+    }
+
+    textarea {
+        width: 90%;
+    }
+}

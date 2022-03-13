@@ -1,0 +1,65 @@
+<header>
+
+    <section class="header-profile">
+        <div class="header-menu-icon">
+            <img class="icon" src="./images/menu-icon.svg" alt="">
+        </div>
+        <h1>Viktor Bem</h1>
+        <img src="./images/viktor.jpg" alt="">
+        <p class="resp-hidden">Hi, my name is Viktor, but people often call me David. Welcome to my website!</p>
+    </section>
+
+    <nav>
+        <hr class="resp-hidden">
+        <ul>
+            <li>
+                <a class="header-link" href="/">About Me</a>
+            </li>
+            <li>
+                <a class="header-link" href="/portfolio">Portfolio</a>
+            </li>
+            <li>
+                <a class="header-link" href="/resume">Resume</a>
+            </li>
+            <li>
+                <a class="header-link" href="/contact">Contact Me</a>
+            </li>
+        </ul>
+        <hr>
+    </nav>
+
+    <section class="header-bottom">
+        <div class="header-social">
+            <a href="https://www.linkedin.com/in/bemviktor/?locale=en_US" target="_blank">
+                <i class="fa fa-linkedin-square"></i>
+            </a>
+            <a href="https://twitter.com/malchikkcz" target="_blank">
+                <i class="fa fa-twitter-square"></i>
+            </a>
+            <a href="https://github.com/malchikkCZ" target="_blank">
+                <i class="fa fa-github-square"></i>
+            </a>
+        </div>
+        <p class="resp-hidden">Copyright &copy; 2021 Viktor Bem</p>
+    </section>
+
+</header>
+
+
+<script>
+
+    // toggle mobile menu on button click
+    $('.header-menu-icon').on('click', () => {
+        $('nav').slideToggle();
+        $('.header-bottom').slideToggle();
+    });
+
+    // hide mobile menu if click outside of header
+    $(document).on('click', (e) => {
+        if ($(e.target).closest('header').length === 0 && $(window).width() < 1024 ) {
+            $('nav').slideUp();
+            $('.header-bottom').slideUp();
+        }
+    })
+
+</script>

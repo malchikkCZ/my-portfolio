@@ -1,0 +1,8 @@
+:root {
+    --color-dark: #053742;
+    --color-light: #E8F0F2;
+    --color-link-main: #39A2DB;
+    --color-link-transparent: #39A2DB30;
+
+    --font-family-default: monospace;
+}

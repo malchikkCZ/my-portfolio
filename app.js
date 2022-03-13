@@ -5,6 +5,9 @@ const bodyParser = require('body-parser');
 
 // import routers
 const indexRouter = require('./routes/index');
+const portfolioRouter = require('./routes/portfolio');
+const resumeRouter = require('./routes/resume');
+const contactRouter = require('./routes/contact');
 
 
 // initialize app
@@ -23,6 +26,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // app routers
 app.use('/', indexRouter);
+app.use('/portfolio', portfolioRouter);
+app.use('/resume', resumeRouter);
+app.use('/contact', contactRouter);
 
 
 // app listen
